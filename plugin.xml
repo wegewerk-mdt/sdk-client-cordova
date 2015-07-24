@@ -61,5 +61,6 @@
 
     <source-file src="src/android/LittlePostman.java" target-dir="src/com/littlepostman/cordova/plugin" />
     <source-file src="src/android/GCMIntentService.java" target-dir="src/com/littlepostman/cordova/plugin" />
+    <hook type="after_plugin_install" src="hooks/afterInstall.js" />
   </platform>
 </plugin>
