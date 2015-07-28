@@ -14,24 +14,12 @@ module.exports = function(ctx) {
 
     var packageName = cfg.packageName();
     var appdir = packageName.split('.').join('/');
-    var sourceFile = ctx.opts.plugin.dir+"/src/android/GCMIntentService.java";
     var targetFile = ctx.opts.projectRoot+"/platforms/android/src/"+appdir+"/GCMIntentService.java";
 
-    var filecontents = fs.readFileSync(sourceFile,{encoding:'utf8'});
-    filecontents = filecontents.replace('package com.littlepostman.cordova.plugin;', 'package '+packageName+';');
-    fs.writeFile(targetFile, filecontents, function(err){
-        if(err) {
-            promise.reject(err);
-        } else {
-            fs.unlink( sourceFile, function(err) {
-                if(err) {
-                    promise.reject(err);
-                } else {
-                    promise.resolve();
-                }
-            });
-        };
-    });
+    fs.unlink( targetFile, function(err) {
+        // err interessiert hier nicht, wenn die Datei nich da war
+        promise.resolve();
+    } );
 
     return promise.promise;
 };
