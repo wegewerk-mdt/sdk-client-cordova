@@ -23,13 +23,7 @@ module.exports = function(ctx) {
         if(err) {
             promise.reject(err);
         } else {
-            fs.unlink( sourceFile, function(err) {
-                if(err) {
-                    promise.reject(err);
-                } else {
-                    promise.resolve();
-                }
-            });
+            promise.resolve();
         };
     });
 
